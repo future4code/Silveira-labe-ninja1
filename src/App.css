@@ -22,6 +22,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  background-image: linear-gradient(to top, #cd0f0f 0%, #e2ebf0 100%);    
 }
 
 .App-link {
@@ -36,3 +37,5 @@
     transform: rotate(360deg);
   }
 }
+
+
