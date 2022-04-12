@@ -19,7 +19,7 @@ export default class ServiceRegister extends React.Component {
         inputTitle: "",
         inputDescription: "",
         inputPrice: "",
-        inputPaymentMethods: ["ticket", "credit card", "debit card", "pix", "PayPal"],
+        inputPaymentMethods: "",
         inputDueDate: ""
     }
 
@@ -35,11 +35,11 @@ export default class ServiceRegister extends React.Component {
             .get(url, headers)
             .then((res) => {
                 this.setState({
-                    jobs: res.data
+                    jobs: res.data.jobs
                 });
             })
             .catch((err) => {
-                console.log(err.response);
+                console.log(err);
             })
 
     }
@@ -51,26 +51,71 @@ export default class ServiceRegister extends React.Component {
         const body = {
             title: this.state.inputTitle,
             description: this.state.inputDescription,
+            price: Number(this.state.inputPrice),
+            paymentMethods: this.state.inputPaymentMethods,
+            dueDate: this.state.inputDueDate
+        }
+
+        const newJobs = {
+            title: this.state.inputTitle,
+            description: this.state.inputDescription,
             price: this.state.inputPrice,
             paymentMethods: this.state.inputPaymentMethods,
-            dueDate: this.state.iinputDueDate
+            dueDate: this.state.inputDueDate
         }
+
+        const jobsWithNewJob = [...this.state.jobs, newJobs]
+
         axios
             .post(url, body, headers)
             .then((res) => {
+                this.setState({
+                    jobs: jobsWithNewJob,
+                    inputTitle: "",
+                    inputDescription: "",
+                    inputPrice: "",
+                    inputPaymentMethods: "",
+                    inputDueDate: ""
+                })
                 alert("Job Created Successfully!")
                 this.getAllJobs();
             })
             .catch((err) => {
-                console.log(err.response.data);
+                console.log(err.response);
             })
 
     }
 
+    onChangeInputTitle = (event) => {
+        this.setState({
+            inputTitle: event.target.value
+        });
+    }
+
+    onChangeInputDescription = (event) => {
+        this.setState({
+            inputDescription: event.target.value
+        });
+    }
+
+    onChangePrice = (event) => {
+        this.setState({
+            inputPrice: event.target.value
+        });
+    }
 
     onChangeSelect = (event) => {
+
+        let value = Array.from(event.target.selectedOptions, option => option.value)
+
         this.setState({
-            inputPaymentMethods: event.target.value
+            inputPaymentMethods: value
+        });
+    }
+
+    onChangeDate = (event) => {
+        this.setState({
+            inputDueDate: event.target.value
         });
     }
 
@@ -78,26 +123,26 @@ export default class ServiceRegister extends React.Component {
 
     render() {
 
+
+
         const jobList = this.state.jobs.map((job) => {
-            return (
-                <li key={job.id}>{job.title}{job.description}{job.price}</li>
-            )
+            return <li key={job.id}>{job.title}: {job.description}. Price: ${job.price}</li>
         })
 
         return (
             <MainDiv>
                 <div>
-                    <input />
-                    <input />
-                    <input />
-                    <select value={this.state.inputPaymentMethods} onClick={this.onChangeSelect}>
+                    <input value={this.state.inputTitle} onChange={this.onChangeInputTitle} placeholder="Title" />
+                    <input value={this.state.inputDescription} onChange={this.onChangeInputDescription} placeholder="Description" />
+                    <input type="number" value={this.state.inputPrice} onChange={this.onChangePrice} placeholder="Price" />
+                    <select value={this.state.inputPaymentMethods} onChange={this.onChangeSelect} multiple>
                         <option value="ticket">Boleto</option>
                         <option value="credit card">Cartão de crédito</option>
                         <option value="debit card">Cartão de débito</option>
                         <option value="pix">Pix</option>
                         <option value="PayPal">PayPal</option>
                     </select>
-                    <input type="date" />
+                    <input value={this.state.inputDueDate} onChange={this.onChangeDate} type="date" />
                     <button onClick={this.createJob}>Register Job!</button>
                 </div>
                 <div>
@@ -106,7 +151,4 @@ export default class ServiceRegister extends React.Component {
             </MainDiv>
         )
     }
-
-
-
 }

@@ -6,63 +6,65 @@ const CartCard = styled.div`
     flex-direction: column;
     width: 50vw;
     border: 2px solid red;
-    background-image: linear-gradient(to top, #cd350f 0%, #e2ebf0 100%);  
+    background-image: linear-gradient(rgb(255, 115, 115) 20%, #8dc1dd 100%);     
  `
 
 
 class Cart extends React.Component {
 
-    checkout = () => {
-        return alert("Thank you. We hope to see you again!")
+  state = {
+    cart: []
+  }
+
+  componentDidMount() {
+        const cartString = localStorage.getItem("cart")
+    if (cartString) {
+      const cartObj = JSON.parse(cartString)
+      this.setState({ cart: cartObj })
     }
+  };
 
-    deleteService = (serviceToRemove) => {
-        if (rserviceToRemove.quantity <= 1) {
-          const newCartList= this.state.cart.filter((service) => {
-            returnservice.id !== serviceToRemove.id
-          })
-          this.setState({ cart: newCartList })
-        } else {
-          const newCartList = this.state.cart.map((service) => {
-            if (service.id === serviceToRemove.id) {
-              return {...service, quantity:service.quantity-1}
-            }
-            return service
-          })
-          this.setState({ cart:newCartList })
-        }  
-        
-      }
+  componentDidUpdate(prevProps) {
+    if (this.props.cartFilter !== prevProps.cartFilter) {
+      this.setState({ cart: this.props.cartFilter })
+    }   
+    localStorage.setItem("cart", JSON.stringify(this.state.cart))
+  };
+
+  checkout = () => {
+    return alert("Thank you. We hope to see you again!")
+  }
+
+  
 
 
-    render () {
+  render() {
 
-        const total  = (this.props.cart).reduce((addToken, service) => addToken+service.value*service.quantity, 0)
-        
+    const total = (this.state.cart).reduce((addToken, service) => addToken + service.price, 0)
 
-        const listCart = this.state.cart.map((item) => {
-            return (      
-              <div key={item.id}>
-                  <p>{item.quantity}x</p>
-                  <p>{item.title}</p>
-                  <p> R$: {item.value*item.quantity}</p>
-                  <button onClick={() => this.deleteService(item.id)}>X</button>
-              </div>
-      
-            )
-          })
 
-        return (
-            <CartCard>
-                <hi>Cart</hi>
-                {this.listCart}
-                <p>Total: R$: {total} </p>
-                <button onClick={(this.deleteCart)}>Delete Cart</button>
-                {/* <button onClick={(this.keepShopping)}>Go back to Services</button>  PRECISA SABER COMO FAZ A MUDANÇA DE PÁGINAS */}
-                <button onClick={(this.checkout)}>PROCEED TO CHECHOUT</button>
-            </CartCard>
-        )
-    }
+    const listCart = this.state.cart.map((item) => {
+      return (
+        <div key={item.id}>
+          <p>{item.title}</p>
+          <p> R$: {item.price}</p>
+          <button onClick={() => this.props.deleteService(item.id)}>X</button>
+        </div>
+
+      )
+    })
+
+    return (
+      <CartCard>
+        <hi>Cart</hi>
+        {listCart}
+        <p>Total: R$: {total} </p>
+        <button onClick={(this.props.deleteCart)}>Delete Cart</button>
+        {/* <button onClick={(this.keepShopping)}>Go back to Services</button>  PRECISA SABER COMO FAZ A MUDANÇA DE PÁGINAS */}
+        <button onClick={(this.props.checkout)}>PROCEED TO CHECKOUT</button>
+      </CartCard>
+    )
+  }
 }
 
 export default Cart
