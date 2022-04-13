@@ -2,29 +2,83 @@ import React from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 import Delete from '../img/delete.png'
-import Gif from '../img/gif.gif'
+import Giff from '../img/gif.gif'
 
 
 const MainContainer = styled.div`
     box-sizing: border-box;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    row-gap: 5vh;
 
 `
 const FilterContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+    padding-top: 40px;
 
 `
 
+const H2 = styled.h2`
+    margin-top: 40px;
+    padding-left: 70px;
+    color: #4B181C;
+    font-size: 30px;
+    text-shadow: 0 1px 0 #ccc,
+                 0 2px 0 #c9c9c9,
+                 0 3px 0 #bbb,
+                 0 4px 0 #b9b9b9,
+                 0 5px 0 #aaa,
+                 0 6px 1px rgba(0,0,0,.1),
+                 0 0 5px rgba(0,0,0,.1),
+                 0 1px 3px rgba(0,0,0,.3),
+                 0 3px 5px rgba(0,0,0,.2),
+                 0 5px 10px rgba(0,0,0,.25),
+                 0 10px 10px rgba(0,0,0,.2),
+                 0 20px 20px rgba(0,0,0,.15);
+                
+
+`
+const Input = styled.input`
+    border: 2px solid #4B181C;
+    border-radius: 4px;
+    padding: 10px;
+	margin: 0 auto;
+	border-radius: 50px;
+	text-transform: uppercase;
+	background: linear-gradient(to right, whitesmoke, #D1B8B8 );
+	cursor: pointer;
+`
+
+const P = styled.p`
+display: flex;
+justify-content: center;
+color: #4B181C;
+text-shadow: 4px 3px 0px #fff, 9px 8px 0px rgba(0,0,0,0.15);
+font-size: 17px;
+color: #4B181C;
+`
+
+const Ordering = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 10px;
+    height: 7px;
+    margin-right: 70px;
+    color: #4B181C;
+`
+
+
+
 const CardsContainer = styled.div`
     display: flex;
-    row-gap: 10px;
-    column-gap: 10px;
+    column-gap: 4vw;
     flex-direction: column;
-    border: 2px solid black;
-    flex-wrap: wrap;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;    flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
-    width: 15vw;
+    width: 20vw;
+    min-height: 50vh;
     p {
         text-align: center;
         word-wrap: break-word;
@@ -41,10 +95,9 @@ const CardsContainer = styled.div`
         font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
         font-size: 16px;
         font-weight: 800;
-        line-height: 16px;
         min-height: 40px;
         outline: 0;
-        padding: 12px 14px;
+        padding: 8px 10px;
         text-align: center;
         text-rendering: geometricprecision;
         text-transform: none;
@@ -52,6 +105,8 @@ const CardsContainer = styled.div`
         -webkit-user-select: none;
         touch-action: manipulation;
         vertical-align: middle;
+        position: relative;
+        bottom: 10px;
         }
 
     button:hover, button:active {
@@ -72,10 +127,29 @@ const CardsContainer = styled.div`
 `
 const Cards = styled.div`
     display: flex;
-
+    flex-wrap: wrap;
+    row-gap: 15px;
+    column-gap: 15px;
 `
 
 const Description = styled.div`
+
+`
+const DivTitle = styled.div`
+    min-height: 40vh;
+    p {
+        text-align: center;
+    }
+    h3 {
+        text-align: center;
+    }
+`
+const DivBotoes = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    box-sizing: border-box;
+    row-gap: 3px;
 
 `
 
@@ -100,7 +174,7 @@ export default class Filters extends React.Component {
 
     componentDidMount() {
         this.getAllJobs()
-        setTimeout(() => {this.setState({loading: false}) }, 1000);
+        setTimeout(() => { this.setState({ loading: false }) }, 1000);
         const orderingString = localStorage.getItem("ordering")
         const minString = localStorage.getItem("min")
         const maxString = localStorage.getItem("max")
@@ -206,7 +280,7 @@ export default class Filters extends React.Component {
             switch (this.state.ordering) {
                 case "Titulo":
                     return a.title - b.title
-                case "Valor da Remuneracao":
+                case "Valor da Remuneração":
                     return a.price - b.price
                 case "Prazo":
                     return a.dueDate.localeCompare(b.dueDate)
@@ -217,15 +291,19 @@ export default class Filters extends React.Component {
             return (
                 <CardsContainer key={job.id}>
                     <img src={Delete} alt="delete" onClick={() => this.deleteJob(job)} />
-                    <h3> {job.title} </h3>
-                    <p><strong>Price: </strong> {job.price}</p>
-                    <p><strong>Deadline: </strong> {this.removeTime(job.dueDate)}</p>
+                    <DivTitle>
+                        <h3> {job.title} </h3>
+                        <p><strong>Price: </strong> R$ {job.price}</p>
+                        <p><strong>Deadline: </strong> {this.removeTime(job.dueDate)}</p>
+                    </DivTitle>
                     {this.state.description &&
                         <Description id={job.id}>
                             <p>{job.description}</p>
                         </Description>}
-                    <button onClick={() => this.setDisplay(job)}>Description</button>
-                    <button onClick={() => this.props.addCart(job)}>Add to Cart</button>
+                    <DivBotoes>
+                        <button onClick={() => this.setDisplay(job)}>Description</button>
+                        <button onClick={() => this.props.addCart(job)}>Add to Cart</button>
+                    </DivBotoes>
 
 
                 </CardsContainer>
@@ -236,18 +314,18 @@ export default class Filters extends React.Component {
             case true:
                 return (
                     <div>
-                         <img src={Gif} alt='gif' width ='300px'/>
+                        <img src={Giff} alt='gif' width='300px' />
                     </div>
                 )
             case false:
                 return (
                     <MainContainer>
                         <FilterContainer>
-                            <h2>Filtros</h2>
+                            <H2>Filtros</H2>
 
                             <div>
-                                <p>Valor minimo:</p>
-                                <input
+                                <P><b>Valor Mínimo:</b></P>
+                                <Input
                                     type='number'
                                     value={this.state.minFilter}
                                     onChange={this.onChangeMinFilter}
@@ -255,8 +333,8 @@ export default class Filters extends React.Component {
                             </div>
 
                             <div>
-                                <p>Valor maximo:</p>
-                                <input
+                                <P><b>Valor Máximo:</b></P>
+                                <Input
                                     type="number"
                                     value={this.state.maxFilter}
                                     onChange={this.onChangeMaxFilter}
@@ -264,8 +342,8 @@ export default class Filters extends React.Component {
                             </div>
 
                             <div>
-                                <p>Busca:</p>
-                                <input
+                                <P><b>Busca:</b></P>
+                                <Input
                                     type="text"
                                     value={this.state.searchFilter}
                                     onChange={this.onChangeSearchFilter}
@@ -273,17 +351,18 @@ export default class Filters extends React.Component {
                             </div>
 
 
-                            <div className="ordering">
+                            <Ordering className="ordering">
+                                <p><b>Ordenar por:</b></p>
                                 <select
                                     value={this.state.ordering}
                                     onChange={this.onChangeOrdering}
 
                                 >
                                     <option value="Titulo">Titulo</option>
-                                    <option value="Valor da Remuneracao">Valor da remuneracao</option>
+                                    <option value="Valor da Remuneração">Valor da remuneracao</option>
                                     <option value="Prazo">Prazo</option>
                                 </select>
-                            </div>
+                            </Ordering>
 
 
 

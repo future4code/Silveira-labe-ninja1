@@ -1,13 +1,22 @@
 import React from "react";
 import styled from 'styled-components'
+import axios from 'axios'
 
 const CartCard = styled.div`
     display: flex;
     flex-direction: column;
+    margin: auto;
     width: 50vw;
-    border: 2px solid red;
     background-image: linear-gradient(rgb(255, 115, 115) 20%, #8dc1dd 100%);     
+    border: 2px solid #4B181C;
+  border-radius: 4px;
  `
+
+const headers = {
+  headers: {
+      'Authorization': '07c443c6-17f3-4271-a8c7-69af5aa2c5f3'
+  }
+}
 
 
 class Cart extends React.Component {
@@ -24,9 +33,21 @@ class Cart extends React.Component {
     }
   };
 
+  getFilteredJobs = () => {
+    const url = 'https://labeninjas.herokuapp.com'
+    axios
+        .get(`${url}/jobs`, headers)
+        .then((response) => {
+            this.setState({ cart: response.data.jobs })
+        })
+        .catch((error) => {
+            console.log(error.response.data)
+        })
+}
+
   componentDidUpdate(prevProps) {
     if (this.props.cartFilter !== prevProps.cartFilter) {
-      this.setState({ cart: this.props.cartFilter })
+      this.getFilteredJobs()
     }   
     localStorage.setItem("cart", JSON.stringify(this.state.cart))
   };
@@ -48,7 +69,7 @@ class Cart extends React.Component {
         <div key={item.id}>
           <p>{item.title}</p>
           <p> R$: {item.price}</p>
-          <button onClick={() => this.props.deleteService(item.id)}>X</button>
+          <button onClick={() => this.props.deleteService(item)}>X</button>
         </div>
 
       )
@@ -56,12 +77,12 @@ class Cart extends React.Component {
 
     return (
       <CartCard>
-        <hi>Cart</hi>
+        <h1>Cart</h1>
         {listCart}
         <p>Total: R$: {total} </p>
         <button onClick={(this.props.deleteCart)}>Delete Cart</button>
-        {/* <button onClick={(this.keepShopping)}>Go back to Services</button>  PRECISA SABER COMO FAZ A MUDANÇA DE PÁGINAS */}
-        <button onClick={(this.props.checkout)}>PROCEED TO CHECKOUT</button>
+        <button onClick={(this.props.choosePageFilters)}>Go back to Services</button> 
+        <button onClick={(this.checkout)}>PROCEED TO CHECKOUT</button>
       </CartCard>
     )
   }

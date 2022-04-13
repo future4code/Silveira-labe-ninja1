@@ -1,61 +1,77 @@
 import React from 'react'
-import Signup from './components/Signup'
 import Filters from './components/Filters'
-// import ServiceRegister from './components/ServiceRegister'
+import ServiceRegister from './components/ServiceRegister'
 import Cart from './components/Cart'
+import HomePage from './components/HomePage'
 import axios from 'axios'
 import styled, { createGlobalStyle } from 'styled-components'
 import Logo from './img/logo.png'
 import Ninja from './img/ninja.png'
 import Gif from './img/gid.gif'
+// import Header from './components/Header'
 
 const Global = createGlobalStyle`
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-`
-const Header = styled.div`
-	background-image: linear-gradient(45deg, #874da2 0%, #c43a30 100%);
-
-	p {
-		font-size: 30px;
-		color: white;
-		padding-left: 80px;
-		padding-bottom: 4px;
-	}
-
-	img {
-		width: 50px;
-		padding-left: 5px;
-	};
-`
+`;
 
 const Button = styled.button`
-    background-color: rgb(228, 90, 90);
-	padding: 6px 16px;
-	font-size: 0.875rem;
-	min-width: 64px;
-	box-sizing: border-box;
-	font-weight: 500;
-	line-height: 1.75;
-	border-radius: 4px;
-	letter-spacing: 0.02857em;
-	text-transform: uppercase;
-`
+  background-color: #4B181C;
+  color: white;
+  padding: 6px 16px;
+  font-size: 0.875rem;
+  min-width: 64px;
+  box-sizing: border-box;
+  font-weight: 500;
+  line-height: 1.75;
+  margin-bottom: 20px;
+  margin-left: 550px;
+  display: inherit;
+  align-items: inherit;
+  justify-content: inherit;
+  box-shadow: #280000;
+  border-radius: 5px;
+  letter-spacing: 0.02857em;
+  text-transform: uppercase;
+  cursor: pointer;
+
+  :hover {
+	background: #333333;
+  	background: -webkit-linear-gradient(
+    to right,
+    #dd1818,
+    #333333
+  );
+  background: linear-gradient(
+    to right,
+    #dd1818,
+    #333333
+  );
+
+  box-shadow: white;
+  }
+`;
 
 const Section = styled.div`
-	background-color: rgb(255, 250, 250);
-	align-items: center;
-	
-	img {
-		padding-left: 300px;
-		padding-bottom: 20px;
-	}
+  background-color: whitesmoke;
+  align-items: center;
+  margin-top: -29px;
+`;
+
+const DivGif = styled.div`
+	padding-left: 430px;
+	padding-bottom: 6px;
+	margin-top: 20px;
+	margin-bottom: 7px;
+	width: 31vw;
+	min-width: 300px;
 `
 
 const Footer = styled.div`
-	background-color: #cd0f0f;
-`
+  background-color: #cd0f0f;
+`;
+
 
 const headers = {
 	headers: {
@@ -65,10 +81,11 @@ const headers = {
 
 export default class App extends React.Component {
 	state = {
-		currentPage: "home",
 		cart: [],
 		inputSearch: "",
-		selectedJobId: ""
+		selectedJobId: "",
+		currentPage: "filters"
+		// currentPage: "cart"
 	}
 
 	componentDidMount() {
@@ -112,13 +129,12 @@ export default class App extends React.Component {
             this.setState({cart: newCart})
           }
       }
-
+	  					
 	  deleteService = (serviceToRemove) => {
 		const newCartList = this.state.cart.filter((service) => {
 		  return service.id !== serviceToRemove.id
 		})
 		this.setState({ cart: newCartList })
-	
 	  }
 	
 	  deleteCart = () => {
@@ -126,49 +142,82 @@ export default class App extends React.Component {
 	  }
 	
 
-	/*choosePage = () => {
+	
+	choosePageHome = () => {
+		this.setState({ currentPage: "homepage" })
+	}
+
+	choosePageFilters = () => {
+		this.setState({ currentPage: "filters" })
+	}
+
+	choosePageService = () => {
+		this.setState({ currentPage: "serviceregister" })
+	}
+
+	choosePageCart = () => {
+		this.setState({ currentPage: "cart" })
+	}
+
+
+
+	renderPage = () => {
 		switch (this.state.currentPage) {
-			case "home":
-				return <HomePage changePage={this.changePage} />
+		  case "homepage":
+			return <HomePage
+		choosePageFilters = {this.choosePageFilters} 
+		choosePageService = {this.choosePageService} 
+		/>;
+		  case "filters":
+			return <Filters  addCart = {this.addCart} />;
+		  case "serviceregister":
+			return <ServiceRegister />;
 			case "cart":
-				return <CartPage changePage={this.changePage} cart={this.state.cart} removeFromCart={this.removeFromCart} clearCart={this.clearCart}/>
-			case "detail":
-				return <ServiceDetail jobId={this.state.selectedJobId} changePage={this.changePage} cart={this.state.cart}/>
-			case "list":
-				return <ServicesListPage searchText={this.state.inputSearch} changePage={this.changePage} addToCart={this.addToCart} cart={this.state.cart} goToDetailPage={this.goToDetailPage}/>
-			default:
-				return <HomePage changePage={this.changePage} />
+			return <Cart cartFilter = {this.state.cart}
+			deleteService = {this.deleteService}
+			deleteCart  = {this.deleteCart} 
+			choosePageFilters = {this.choosePageFilters} />;
 		}
-	}*/
+	  }
 
 	render() {
 		return (
 			<>
 				<Global />
 
-				<Header>
-					<img src={Ninja} alt='icon' />
+				{/* <Header 
+				>
+					<a href="./components/HomePage"> <img src={Ninja} alt='icon' /> </a>
+
 
 					<p>LabeNinjas</p>
-				</Header>
+				</Header> */}
 
-				<Section>
+				{/* <Header 
+				choosePageHome = {this.choosePageHome} 
+				/> */}
+
+				{/* <Section> */}
+					{/*<DivGif>*/}
 					{/* <img src={Gif} alt='logo' width ='300px'/> */}
+					{/*</DivGif>*/}
 
-					<Button>QUERO SER UM NINJA</Button>
-					<Button>CONTRATAR UM NINJA</Button>
+					{/* <Button>QUERO SER UM NINJA</Button>
+					<Button>CONTRATAR UM NINJA</Button> */}
 					{/* Aqui tem que colocar a function de renderização das páginas com state */}
 
 					{/* <ServiceRegister />  */}
-					<Cart
+					{/* <Cart
 					cartFilter = {this.state.cart}
 					deleteService = {this.deleteService}
 					deleteCart  = {this.deleteCart} 
-					 />
-				</Section>
-				<Filters
+					 /> */}
+				{/* </Section> */}
+				{/* <Filters
 				addCart = {this.addCart}
-				 />
+				 /> */}
+
+				 <Section> {this.renderPage()}</Section>
 				
 				<Footer>
 

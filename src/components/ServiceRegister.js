@@ -2,8 +2,26 @@ import React from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 
+
 const MainDiv = styled.div`
 
+`
+
+const FormDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    width: 500px;
+    margin: 20vh auto;
+    gap: 5px;
+`
+
+const Input = styled.input`
+    height: 30px;
+`
+
+const BTN = styled.button`
+    height: 30px;
 `
 
 const headers = {
@@ -125,16 +143,14 @@ export default class ServiceRegister extends React.Component {
 
 
 
-        const jobList = this.state.jobs.map((job) => {
-            return <li key={job.id}>{job.title}: {job.description}. Price: ${job.price}</li>
-        })
+        
 
         return (
             <MainDiv>
-                <div>
-                    <input value={this.state.inputTitle} onChange={this.onChangeInputTitle} placeholder="Title" />
-                    <input value={this.state.inputDescription} onChange={this.onChangeInputDescription} placeholder="Description" />
-                    <input type="number" value={this.state.inputPrice} onChange={this.onChangePrice} placeholder="Price" />
+                <FormDiv>
+                    <Input value={this.state.inputTitle} onChange={this.onChangeInputTitle} placeholder="Title" />
+                    <Input value={this.state.inputDescription} onChange={this.onChangeInputDescription} placeholder="Description" />
+                    <Input type="number" value={this.state.inputPrice} onChange={this.onChangePrice} placeholder="Price" />
                     <select value={this.state.inputPaymentMethods} onChange={this.onChangeSelect} multiple>
                         <option value="ticket">Boleto</option>
                         <option value="credit card">Cartão de crédito</option>
@@ -142,12 +158,9 @@ export default class ServiceRegister extends React.Component {
                         <option value="pix">Pix</option>
                         <option value="PayPal">PayPal</option>
                     </select>
-                    <input value={this.state.inputDueDate} onChange={this.onChangeDate} type="date" />
-                    <button onClick={this.createJob}>Register Job!</button>
-                </div>
-                <div>
-                    {jobList}
-                </div>
+                    <Input value={this.state.inputDueDate} onChange={this.onChangeDate} type="date" />
+                    <BTN onClick={this.createJob}>Register Job!</BTN>
+                </FormDiv>
             </MainDiv>
         )
     }
