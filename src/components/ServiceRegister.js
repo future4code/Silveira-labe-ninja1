@@ -4,7 +4,7 @@ import axios from 'axios'
 
 
 const MainDiv = styled.div`
-
+    box-sizing: border-box;
 `
 
 const FormDiv = styled.div`
@@ -14,6 +14,10 @@ const FormDiv = styled.div`
     width: 500px;
     margin: 20vh auto;
     gap: 5px;
+
+    @media screen and (max-width: 600px ) {
+        width: 100%
+    }
 `
 
 const Input = styled.input`

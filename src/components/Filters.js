@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import axios from 'axios'
 import Delete from '../img/delete.png'
 import Giff from '../img/gif.gif'
+import  CardService  from './CardSevice'
 
 
 const MainContainer = styled.div`
@@ -16,12 +17,17 @@ const FilterContainer = styled.div`
     display: flex;
     justify-content: space-between;
     padding-top: 40px;
+    @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+    }
+        
 
 `
 
 const H2 = styled.h2`
-    margin-top: 40px;
-    padding-left: 70px;
     color: #4B181C;
     font-size: 30px;
     text-shadow: 0 1px 0 #ccc,
@@ -36,8 +42,6 @@ const H2 = styled.h2`
                  0 5px 10px rgba(0,0,0,.25),
                  0 10px 10px rgba(0,0,0,.2),
                  0 20px 20px rgba(0,0,0,.15);
-                
-
 `
 const Input = styled.input`
     border: 2px solid #4B181C;
@@ -48,6 +52,7 @@ const Input = styled.input`
 	text-transform: uppercase;
 	background: linear-gradient(to right, whitesmoke, #D1B8B8 );
 	cursor: pointer;
+    
 `
 
 const P = styled.p`
@@ -63,13 +68,26 @@ const Ordering = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding-top: 10px;
     height: 7px;
     margin-right: 70px;
     color: #4B181C;
+    @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-right: 60px;
+        margin-bottom: 70px;
+        margin-left: 60px;
+}
+
 `
 
-
+const Divh2 = styled.div `
+    padding-left: 40px;
+    @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+        padding: 0;
+    }
+`
 
 const CardsContainer = styled.div`
     display: flex;
@@ -77,11 +95,15 @@ const CardsContainer = styled.div`
     flex-direction: column;
     box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;    flex-wrap: wrap;
     align-items: center;
-    width: 20vw;
+    width: 250px;
     min-height: 50vh;
     p {
         text-align: center;
         word-wrap: break-word;
+        font-size: 1.5em;
+    }
+    h3{
+        font-size: 1.5em;
     }
     button { 
         background: #4B181C;
@@ -89,6 +111,7 @@ const CardsContainer = styled.div`
         border-radius: 6px;
         box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
         box-sizing: border-box;
+        word-wrap: break-word;
         color: #FFFFFF;
         cursor: pointer;
         display: inline-block;
@@ -108,15 +131,23 @@ const CardsContainer = styled.div`
         position: relative;
         bottom: 10px;
         }
+    @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+        button{
+        font-size: 20px;
+        padding: 2px 4px;
+        min-height: 25px;
+        }
+        
+        }
 
     button:hover, button:active {
-    background-color: initial;
-    background-position: 0 0;
-    color: #4B181C;
+        background-color: initial;
+        background-position: 0 0;
+        color: #4B181C;
     }
 
     button:active {
-    opacity: .5;
+        opacity: .5;    
     }
 
     img {
@@ -128,6 +159,7 @@ const CardsContainer = styled.div`
 const Cards = styled.div`
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     row-gap: 15px;
     column-gap: 15px;
 `
@@ -143,6 +175,7 @@ const DivTitle = styled.div`
     h3 {
         text-align: center;
     }
+
 `
 const DivBotoes = styled.div`
     display: flex;
@@ -150,14 +183,21 @@ const DivBotoes = styled.div`
     align-items:center;
     box-sizing: border-box;
     row-gap: 3px;
-
 `
+const GifDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    padding: 20vh;
+`
+
 
 const headers = {
     headers: {
         'Authorization': '07c443c6-17f3-4271-a8c7-69af5aa2c5f3'
     }
 }
+
 
 
 export default class Filters extends React.Component {
@@ -258,10 +298,7 @@ export default class Filters extends React.Component {
         this.setState({ ordering: event.target.value })
     }
 
-    setDisplay = (job) => {
-        let newDescription = !this.state.description
-        this.setState({ description: newDescription })
-    }
+    
 
     removeTime = (dateString) => {
         const date = new Date(dateString)
@@ -289,40 +326,29 @@ export default class Filters extends React.Component {
             }
         }).map(job => {
             return (
-                <CardsContainer key={job.id}>
-                    <img src={Delete} alt="delete" onClick={() => this.deleteJob(job)} />
-                    <DivTitle>
-                        <h3> {job.title} </h3>
-                        <p><strong>Price: </strong> R$ {job.price}</p>
-                        <p><strong>Deadline: </strong> {this.removeTime(job.dueDate)}</p>
-                    </DivTitle>
-                    {this.state.description &&
-                        <Description id={job.id}>
-                            <p>{job.description}</p>
-                        </Description>}
-                    <DivBotoes>
-                        <button onClick={() => this.setDisplay(job)}>Description</button>
-                        <button onClick={() => this.props.addCart(job)}>Add to Cart</button>
-                    </DivBotoes>
-
-
-                </CardsContainer>
+                <CardService
+                job = {job}
+                deleteJob={this.deleteJob}
+                removeTime = {this.removeTime}
+                addCart = {this.props.addCart}
+                />
             )
         })
 
         switch (this.state.loading) {
             case true:
                 return (
-                    <div>
-                        <img src={Giff} alt='gif' width='300px' />
-                    </div>
+                    <GifDiv>
+                        <img src={Giff} alt='gif' width='100px'/>
+                    </GifDiv>
                 )
             case false:
                 return (
                     <MainContainer>
                         <FilterContainer>
+                            <Divh2>
                             <H2>Filtros</H2>
-
+                            </Divh2>
                             <div>
                                 <P><b>Valor Mínimo:</b></P>
                                 <Input
@@ -377,3 +403,4 @@ export default class Filters extends React.Component {
         }
     }
 }
+

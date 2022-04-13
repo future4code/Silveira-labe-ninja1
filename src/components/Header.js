@@ -1,46 +1,60 @@
 import React from "react";
-import styled, { createGlobalStyle } from 'styled-components';
-import Ninja from './img/ninja.png';
+import styled from 'styled-components';
+import Ninja from '../img/ninja.png';
+import Carttt from '../img/cart.png';
 
 const MainContainer = styled.div`
-  background: #333333;
-  background: -webkit-linear-gradient(
-    to right,
-    #dd1818,
-    #333333
-  );
-  background: linear-gradient(
-    to right,
-    #dd1818,
-    #333333
-  );
+  background-color: #730D15;
+`
+
+const HeaderFlex = styled.div`
+flex-direction: row;
+display: flex;
+justify-content: space-between;
+`
+
+const Button = styled.button`
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+`
+
+const DivIcons = styled.div `
+display: flex;
+    img {
+    width: 5vw;
+    padding-top: 6px;
+  };
 
   p {
     font-size: 30px;
     color: white;
-    padding-left: 80px;
-    padding-top: 0px;
-    margin-top: -45px;
-    padding-bottom: 8px;
-    font-weight: bolder;
+    font-weight: bolder;   
+
+  };
+
+  @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    p {
+    font-size: 15px;
   }
-
-  img {
-    width: 50px;
-    padding-left: 10px;
-    padding-top: 6px;
   }
-`;
-
-
+`
 
 class Header extends React.Component {
     render() {
         return (
             <MainContainer>
-                <img src={Ninja} alt='icon' />
-                <p>LabeNinjas</p>
-         </MainContainer>
+                <HeaderFlex>
+                    <DivIcons>
+                        <Button><img src={Ninja} alt="icon" onClick={this.props.choosePageHome} /></Button>
+                        <p>LabeNinjas</p>
+                    </DivIcons>
+                    
+                    <DivIcons>
+                        <Button><img src={Carttt} alt="icon" onClick={this.props.choosePageCart} /></Button>
+                    </DivIcons>
+                </HeaderFlex>
+            </MainContainer>
         )
     }
 }
