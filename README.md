@@ -21,12 +21,6 @@ Nesta página poderão ser filtrados os serviços por preço mínimo, máximo, b
 Dentro de cada serviço há três botões. Um de deletar, onde esse serviço pode ser deletado diretamente da API, um de descrição, onde ao ser clicado exibirá informações adicionais sobre esse serviço, e um de adicionar ao carrinho, onde esse produto será então adicionado ao carrinho.
 Deve-se notar que todas as informações dessa página ficam salvas como local storage, assim, se o usuário sair e voltar depois, tudo estará do mesmo jeito de quando saiu!
 
-<li> Na primeira, há o <strong><em>filtro</em></strong>, onde o usuário pode pesquisar os produtos que serão exibidos na página atráves de três filtos que funcionam concomitantemente: por <strong><em>valor mínimo</em></strong>, <strong><em>máximo</em></strong> e por <strong><em>palavras</em></strong> (ou mesmo letras!);</li>
-
-<li>Na parte do meio estão os <strong><em>produtos</em></strong>. Eles são apresentados de acordo com a filtragem do usuário. De acordo com essas filtragens, acima dos produtos aparecerá <strong><em>quantos itens estão sendo exibidos na tela</em></strong>. Além disso, eles podem ainda cliclar em um <strong><em>dropdown menu</em></strong> para ordenar os itens que estão aparecendo por <strong><em>mais vendidos</em></strong>,  <strong><em>menor preço</em></strong> ou <strong><em>maior preço</em></strong>. Os usuários podem en~tao selecionar os produtos que querem e estes são adicionados ao carrinho;</li>
-
-<li>Por fim, a última seção é o <strong><em>carrinho</em></strong>. Nele, os produtos que foram adicionados aparecerão com suas respectivas <strong><em>quantidades</em></strong>. Além disso, um <strong><em>subtotal para cada produto</em></strong> também aparecerá (ou seja, o valor do produto multiplicado pela quantidade de produtos). Por fim, o <strong><em>valor total da compra</em></strong> também aparece.</li>
-
 Por último, na página de carrinhos, todos os produtos que forem adicionados estarão presente. Deve-se notar que apenas um serviço do mesmo tipo pode ser adicionado. Nessa tela será exibido os serviços, seus preços e o valor total. Além disso, o cliente terá a opção de deletar itens individuallmente, ou mesmo deletar o carrinho inteiro.
 Por fim, há ainda os botões para voltar para os serviços (continuar comprando) e para dar o checkout, onde uma mensagem de agradecimentos aparecerá.
 Aqui o local storage também foi empregado, assim, caso o cliente sia e volte depois, seu carrinho permanecerá intacto.
