@@ -25,7 +25,7 @@ Por último, na página de <strong>carrinhos</strong> todos os produtos que fore
 Por fim, há ainda os botões para voltar para os <strong>serviços</strong> (continuar comprando) e para dar o <strong>checkout</strong>, onde uma <strong>mensagem de agradecimentos</strong> aparecerá.
 Aqui o local storage também foi empregado, assim, caso o cliente sia e volte depois, seu carrinho permanecerá intacto.
 
-Dois outros componentes qaue merecem destaque são o <strong>Header</strong> e o <strong>Footer</strong>, presentes em todas as páginas. No header há no canto esquerdo um ícone do Labeninjas, aonde pode se clicar para retornar à tela <strong>Home</strong>. Já no canto direito há o ícone de um <strong>carrinho</strong>, onde pode se clicar para ir para o <strong>carrinho</strong>.
+Dois outros componentes que merecem destaque são o <strong>Header</strong> e o <strong>Footer</strong>, presentes em todas as páginas. No header há no canto esquerdo um ícone do Labeninjas, aonde pode se clicar para retornar à tela <strong>Home</strong>. Já no canto direito há o ícone de um <strong>carrinho</strong>, onde pode se clicar para ir para o <strong>carrinho</strong>.
 Jpa no footer há TERMINAR O QUE HÁ NO FOOTER.
 
 <strong>COLOCAR FOTOS AQUI</strong>
