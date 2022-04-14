@@ -28,6 +28,6 @@ Por fim, há ainda os botões para voltar para os <strong>serviços</strong> (co
 Aqui o local storage também foi empregado, assim, caso o cliente sia e volte depois, seu carrinho permanecerá intacto.
 
 Dois outros componentes que merecem destaque são o <strong>Header</strong> e o <strong>Footer</strong>, presentes em todas as páginas. No header há no canto esquerdo um ícone do Labeninjas, aonde pode se clicar para retornar à tela <strong>Home</strong>. Já no canto direito há o ícone de um <strong>carrinho</strong>, onde pode se clicar para ir para o <strong>carrinho</strong>.
-Já no footer há TERMINAR O QUE HÁ NO FOOTER.
+Já no footer há informações de copyright e e informações de contato por e-mail ao clicar em nossas fotos no canto direito. As imagens dão um <strong>zoom-out</strong> ao passar o mouse por cima.
 
 <strong>COLOCAR FOTOS AQUI</strong>
