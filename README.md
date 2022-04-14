@@ -14,18 +14,18 @@ O site é dividido em 4 partes:
 <br>
 A página <strong>Home</strong> é a tela inicial. Por ela você consegue acessar todas as outras.
 
-Ao clicar em <strong> quero me tornar um ninja</strong>, a pessoa é levada para uma página em que poderá cadastrar seus serviços. Nesta página a pessoa deverá informar o nome do serviço oferecido, a descrição, o preço, formas de pagamento e prazo. ERssa criação se dará através de uma API.
+Ao clicar em <strong> quero me tornar um ninja</strong>, a pessoa é levada para uma página em que poderá cadastrar seus serviços. Nesta página a pessoa deverá informar o nome do serviço oferecido, a descrição, o preço, formas de pagamento e prazo. ERssa criação se dará através de uma <strong>API</strong>.
 
 Já ao clicar em <strong>contratar um ninja</strong> a pessoa será redirecionada para uma página onde todos os serviços serão carregados, diretamente da API.
 Nesta página poderão ser filtrados os serviços por preço mínimo, máximo, busca por palavras e ainda poderá escolher a ordem de ordenação, tendo como opções título, valor da remuneração e prazo.
-Dentro de cada serviço há três botões. Um de deletar, onde esse serviço pode ser deletado diretamente da API, um de descrição, onde ao ser clicado exibirá informações adicionais sobre esse serviço, e um de adicionar ao carrinho, onde esse produto será então adicionado ao carrinho.
+Dentro de cada serviço há três botões. Um de <strong>deletar</strong>, onde esse serviço pode ser deletado diretamente da API, um de <strong>descrição</strong>, onde ao ser clicado exibirá informações adicionais sobre esse serviço, e um de adicionar ao carrinho, onde esse produto será então adicionado ao carrinho.
 Deve-se notar que todas as informações dessa página ficam salvas como local storage, assim, se o usuário sair e voltar depois, tudo estará do mesmo jeito de quando saiu!
 
 Por último, na página de carrinhos, todos os produtos que forem adicionados estarão presente. Deve-se notar que apenas um serviço do mesmo tipo pode ser adicionado. Nessa tela será exibido os serviços, seus preços e o valor total. Além disso, o cliente terá a opção de deletar itens individuallmente, ou mesmo deletar o carrinho inteiro.
-Por fim, há ainda os botões para voltar para os serviços (continuar comprando) e para dar o checkout, onde uma mensagem de agradecimentos aparecerá.
+Por fim, há ainda os botões para voltar para os <strong>serviços</strong> (continuar comprando) e para dar o <strong>checkout</strong>, onde uma <strong>mensagem de agradecimentos</strong> aparecerá.
 Aqui o local storage também foi empregado, assim, caso o cliente sia e volte depois, seu carrinho permanecerá intacto.
 
-Dois outros componentes qaue merecem destaque são o Header e o Footer, presentes em todas as páginas. No header há no canto esquerdo um ícone do Labeninjas, aonde pode se clicar para retornar à tela Home. Já no canto direito há o ícone de um carrinho, onde pode se clicar para ir para o carrinho.
+Dois outros componentes qaue merecem destaque são o <strong>Header</strong> e o <strong>Footer</strong>, presentes em todas as páginas. No header há no canto esquerdo um ícone do Labeninjas, aonde pode se clicar para retornar à tela <strong>Home</strong>. Já no canto direito há o ícone de um <strong>carrinho</strong>, onde pode se clicar para ir para o <strong>carrinho</strong>.
 Jpa no footer há TERMINAR O QUE HÁ NO FOOTER.
 
-COLOCAR FOTOS AQUI
+<strong>COLOCAR FOTOS AQUI</strong>
