@@ -34,4 +34,4 @@ Aqui o local storage também foi empregado, assim, caso o cliente sia e volte de
 Dois outros componentes qaue merecem destaque são o Header e o Footer, presentes em todas as páginas. No header há no canto esquerdo um ícone do Labeninjas, aonde pode se clicar para retornar à tela Home. Já no canto direito há o ícone de um carrinho, onde pode se clicar para ir para o carrinho.
 Jpa no footer há TERMINAR O QUE HÁ NO FOOTER.
 
-![Captura de tela 2022-04-01 204321](https://user-images.githubusercontent.com/98923335/161354854-5a9bfb1e-c83b-4a7a-89e6-29736bff5fd4.png)
+COLOCAR FOTOS AQUI
