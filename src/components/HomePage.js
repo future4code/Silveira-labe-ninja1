@@ -1,13 +1,15 @@
 import React from "react";
 import styled from 'styled-components';
-// import Gif from './img/gid.gif'
+import LogoHome from '../img/NinjaHome.png'
 
 const MainContainer = styled.div`
-  background: linear-gradient(
-    to right,
-    #dd1818,
-    #333333
-  );
+  background: linear-gradient(to right, #dd1818, #333333);
+  height: 89.4vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+
   p {
     font-size: 30px;
     color: white;
@@ -18,9 +20,7 @@ const MainContainer = styled.div`
     font-weight: bolder;
   };
   img {
-    width: 50px;
-    padding-left: 10px;
-    padding-top: 6px;
+    width: 600px;
   };
   button { 
         background: #4B181C;
@@ -44,21 +44,34 @@ const MainContainer = styled.div`
         -webkit-user-select: none;
         touch-action: manipulation;
         vertical-align: middle;
-        position: relative;
+        /* position: relative; */
         bottom: 10px;
         }
 `
 
+const DivImg = styled.div`
+  margin-top: 20px;
+`
+
+const DivBtn = styled.div`
+  display: flex;
+  gap: 10px;
+`
+
 class HomePage extends React.Component {
-    render() {
-        return (
-            <MainContainer>
-              {/* <a href="./components/HomePage"> <img src={Gif} alt='icon' /> </a> */}
-                <button onClick={(this.props.choosePageFilters)}>CONTRATAR UM NINJA</button>
-                <button onClick={(this.props.choosePageService)}>QUERO SER UM NINJA</button>
-            </MainContainer>
-        )
-    }
+  render() {
+    return (
+      <MainContainer>
+        <DivImg>
+          <a href="./components/HomePage"> <img src={LogoHome} alt='icon' /> </a>
+        </DivImg>
+        <DivBtn>
+          <button onClick={(this.props.choosePageFilters)}>CONTRATAR UM NINJA</button>
+          <button onClick={(this.props.choosePageService)}>QUERO SER UM NINJA</button>
+        </DivBtn>
+      </MainContainer>
+    )
+  }
 }
 
 export default HomePage

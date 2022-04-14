@@ -41,7 +41,7 @@ export default class App extends React.Component {
 		inputSearch: "",
 		selectedJobId: "",
 		// currentPage: "filters"
-		currentPage: "cart"
+		currentPage: "homepage"
 	}
 
 	componentDidMount() {

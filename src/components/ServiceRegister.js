@@ -5,6 +5,19 @@ import axios from 'axios'
 
 const MainDiv = styled.div`
     box-sizing: border-box;
+    background-image: linear-gradient(125deg, rgba(219, 203, 203, 0), rgb(229, 163, 163));
+    height: 89.4vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media screen and (max-height: 979px ) {
+        height: 85.8vh;
+    }
+
+    @media screen and (max-height: 697px ) {
+        height: 85.5vh;
+    }
 `
 
 const FormDiv = styled.div`
@@ -12,20 +25,23 @@ const FormDiv = styled.div`
     flex-direction: column;
     height: 500px;
     width: 500px;
-    margin: 20vh auto;
     gap: 5px;
-
-    @media screen and (max-width: 600px ) {
-        width: 100%
-    }
 `
 
 const Input = styled.input`
     height: 30px;
+    border-radius: 10px;
 `
+const Select = styled.select`
+    background: linear-gradient(whitesmoke, #D1B8B8 );
+    height: 89px;
+`
+
 
 const BTN = styled.button`
     height: 30px;
+    background: #4B181C;
+    color: white;
 `
 
 const headers = {
@@ -155,15 +171,15 @@ export default class ServiceRegister extends React.Component {
                     <Input value={this.state.inputTitle} onChange={this.onChangeInputTitle} placeholder="Title" />
                     <Input value={this.state.inputDescription} onChange={this.onChangeInputDescription} placeholder="Description" />
                     <Input type="number" value={this.state.inputPrice} onChange={this.onChangePrice} placeholder="Price" />
-                    <select value={this.state.inputPaymentMethods} onChange={this.onChangeSelect} multiple>
-                        <option value="ticket">Boleto</option>
-                        <option value="credit card">Cartão de crédito</option>
-                        <option value="debit card">Cartão de débito</option>
+                    <Select value={this.state.inputPaymentMethods} onChange={this.onChangeSelect} multiple>
+                        <option value="ticket">Ticket</option>
+                        <option value="credit card">Credit Card</option>
+                        <option value="debit card">Debit Card</option>
                         <option value="pix">Pix</option>
                         <option value="PayPal">PayPal</option>
-                    </select>
+                    </Select>
                     <Input value={this.state.inputDueDate} onChange={this.onChangeDate} type="date" />
-                    <BTN onClick={this.createJob}>Register Job!</BTN>
+                    <BTN onClick={this.createJob}><strong>Register Job!</strong></BTN>
                 </FormDiv>
             </MainDiv>
         )

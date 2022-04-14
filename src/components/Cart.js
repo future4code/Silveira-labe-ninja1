@@ -9,11 +9,11 @@ const CartCard = styled.div`
     width: 50vw;
     background-image: linear-gradient(125deg, rgba(219, 203, 203, 0), rgb(229, 163, 163));  
     border: 2px solid #4B181C;
-  border-radius: 4px; 
+    border-radius: 4px; 
 
         h1, p1 {
-          text-align: center;    
-          font-family: "TFutura";   
+          text-align: center;
+          font-family: "TFutura";
           ;
         }
         p1 {
@@ -23,8 +23,8 @@ const CartCard = styled.div`
         p {
           font-size: large;
           flex-direction: row;
-  display: flex;
-justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
         }
  `
 const DivdoTable = styled.div`

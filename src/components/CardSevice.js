@@ -18,7 +18,7 @@ const CardsContainer = styled.div`
     h3{
         font-size: 1.5em;
     }
-    button { 
+    button {
         background: #4B181C;
         border: 1px solid #4B181C;
         border-radius: 6px;
