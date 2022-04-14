@@ -5,6 +5,7 @@
 Esse site foi desenvolvido por <em>Adernam Ferris Bauli </em>, <em>Andresa Alves </em>, <em> Christian Cardeal de Miranda Penna Botto</em>, <em>Karen Naomi Cardoso Kubo </em> e <em>Maria Eduarda Lopes</em>.
 
 Ele é um projeto de criação de uma página de  <strong>Labe-Ninjas</strong>, um site onde prestadores de serviço podem cadastrar seus serviços, enquanto pessoas interessadas em contratar esses serviços podem os procurar.
+O site todo é completamente <strong>responsivo</strong>.
 
 O site é dividido em 4 partes:
 <li>Home</li>
@@ -15,7 +16,6 @@ O site é dividido em 4 partes:
 A página <strong>Home</strong> é a tela inicial. Por ela você consegue acessar todas as outras.
 
 Ao clicar em <strong> quero me tornar um ninja</strong>, a pessoa é levada para uma página em que poderá cadastrar seus serviços. Nesta página a pessoa deverá informar o nome do serviço oferecido, a descrição, o preço, formas de pagamento e prazo. Essa criação se dará através de uma <strong>API</strong>.
-O site é completamente <strong>responsivo</strong>.
 
 Já ao clicar em <strong>contratar um ninja</strong> a pessoa será redirecionada para uma página onde todos os <strong>serviços serão carregados</strong>, diretamente da API.
 Nesta página poderão ser <strong>filtrados os serviços por preço mínimo, máximo, busca por palavras e ainda poderá escolher a ordem de ordenação, tendo como opções título, valor da remuneração e prazo</strong>.
