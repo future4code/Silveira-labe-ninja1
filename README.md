@@ -30,4 +30,13 @@ Aqui o local storage também foi empregado, assim, caso o cliente sia e volte de
 Dois outros componentes que merecem destaque são o <strong>Header</strong> e o <strong>Footer</strong>, presentes em todas as páginas. No header há no canto esquerdo um ícone do Labeninjas, aonde pode se clicar para retornar à tela <strong>Home</strong>. Já no canto direito há o ícone de um <strong>carrinho</strong>, onde pode se clicar para ir para o <strong>carrinho</strong>.
 Já no footer há informações de copyright e e informações de contato por e-mail ao clicar em nossas fotos no canto direito. As imagens dão um <strong>zoom-out</strong> ao passar o mouse por cima.
 
-<strong>COLOCAR FOTOS AQUI</strong>
+![1](https://user-images.githubusercontent.com/10249921/163474335-c9f1379d-f924-4d01-9238-3883f358a543.png)
+![2](https://user-images.githubusercontent.com/10249921/163474344-81ff235a-3fa4-455f-83f5-532ac63dce9c.png)
+![3](https://user-images.githubusercontent.com/10249921/163474347-c3db7f73-fd56-47b9-8eb8-62a6e68fd44f.png)
+![4](https://user-images.githubusercontent.com/10249921/163474351-f3a667b9-9713-4459-abfa-1d45e58cc928.png)
+![5](https://user-images.githubusercontent.com/10249921/163474354-826708bb-40eb-4062-b2ea-cf6e6533322e.png)
+![6](https://user-images.githubusercontent.com/10249921/163474361-cf9fb449-5065-462d-af96-1292519b973e.png)
+![7](https://user-images.githubusercontent.com/10249921/163474362-abef8795-c7c4-4759-996b-6100dd7243e3.png)
+![8](https://user-images.githubusercontent.com/10249921/163474363-44e591d5-72f2-4a15-beb9-df1b62c2760d.png)
+![9](https://user-images.githubusercontent.com/10249921/163474365-2896e6ae-c5b3-4587-8b46-961567f5cd13.png)
+
